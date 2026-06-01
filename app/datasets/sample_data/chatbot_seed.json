@@ -1,0 +1,62 @@
+[
+  {
+    "topic": "career_guidance",
+    "question": "How do I become a frontend developer?",
+    "answer": "Start with HTML, CSS, and JavaScript fundamentals. Build 2–3 small projects, then learn React or Vue. Practice responsive design, Git, and deploy one project online. Tailor your resume with project links and apply to internships."
+  },
+  {
+    "topic": "career_guidance",
+    "question": "Give me a roadmap for frontend developer",
+    "answer": "Month 1–2: HTML, CSS, JS, Git. Month 3: React + one portfolio site. Month 4: APIs, state management, testing basics. Month 5–6: Interview prep (DSA light + system design intro) and applications."
+  },
+  {
+    "topic": "career_guidance",
+    "question": "How do I become a software engineer?",
+    "answer": "Master one language (Python or Java), data structures, and one backend framework. Build 2 full-stack projects. Use Vidyastra quizzes to find weak subjects. Analyze your resume against real job descriptions weekly."
+  },
+  {
+    "topic": "resume",
+    "question": "How can I improve my resume?",
+    "answer": "Use action verbs and measurable results (e.g. 'Reduced load time by 30%'). Match keywords from the job description. Keep one page for students. Add skills, projects with links, and remove fluff."
+  },
+  {
+    "topic": "resume",
+    "question": "How do I improve my resume ATS score?",
+    "answer": "Paste the job description into Vidyastra Resume Analyzer. Add missing skills and keywords naturally in your experience bullets. Use standard section headings (Experience, Education, Skills). Export as text-friendly PDF."
+  },
+  {
+    "topic": "interview",
+    "question": "How to prepare for an interview in 7 days?",
+    "answer": "Days 1–2: Review job description + your projects. Days 3–4: 20 DSA problems (easy/medium) on weak topics. Days 5–6: Mock behavioral answers (STAR method). Day 7: Rest, review notes, test your setup for virtual interviews."
+  },
+  {
+    "topic": "study_plan",
+    "question": "Make me a 2-week plan for my weakest subject",
+    "answer": "Week 1: 45 min/day theory + 5 quiz questions on your weakest topic. Week 2: 30 min revision + 1 timed quiz daily + review every wrong answer. End each week with one mini-project applying that subject."
+  },
+  {
+    "topic": "study_plan",
+    "question": "How should I study for exams?",
+    "answer": "Use active recall: quizzes beat re-reading. Block 25-minute focus sessions. Prioritize weak subjects from your Vidyastra dashboard. Sleep 7+ hours before exams."
+  },
+  {
+    "topic": "dsa",
+    "question": "How do I improve in DSA?",
+    "answer": "Learn patterns: two pointers, sliding window, BFS/DFS, binary search. Solve 3 problems daily at your level. After each Vidyastra quiz, rewrite wrong solutions from scratch without looking."
+  },
+  {
+    "topic": "projects",
+    "question": "What projects should I build as a student?",
+    "answer": "Pick problems you care about: task manager, quiz app, resume analyzer clone, or API-backed dashboard. One polished full-stack project beats five half-finished repos."
+  },
+  {
+    "topic": "internships",
+    "question": "How do I get an internship?",
+    "answer": "Apply early with a tailored resume per role. Reach out on LinkedIn with a short note + project link. Contribute to open source or hackathons. Follow up politely after 7–10 days."
+  },
+  {
+    "topic": "weak_subjects",
+    "question": "How do I fix weak subjects?",
+    "answer": "Check Weak Subjects on your dashboard. Take adaptive quizzes on those topics only. Spend 70% of study time on weak areas, 30% on maintenance. Re-test after 3 days."
+  }
+]

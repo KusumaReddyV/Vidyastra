@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/vidyastra/vidyastra.css') }}">
+{% endblock %}
+{% block content %}
+<div class="row g-3 vid-page">
+  <!-- Desktop sidebar -->
+  <div class="col-lg-3 col-xl-2 d-none d-lg-block">
+    <div class="card p-3 sidebar-card">
+      <h6 class="text-white mb-0">Vidyastra</h6>
+
+      <div class="dashboard-sidebar list-group mt-3">
+        <div class="vid-sidebar-title">Main</div>
+        <a href="{{ url_for('dashboard.home') }}" class="list-group-item list-group-item-action {% if active_page=='home' %}active{% endif %}"><i class="fas fa-house"></i>Dashboard</a>
+        <a href="{{ url_for('main.resume_analyzer') }}" class="list-group-item list-group-item-action {% if active_page=='resume' %}active{% endif %}"><i class="fas fa-file-lines"></i>Resume Analyzer</a>
+        <a href="{{ url_for('dashboard.resume_history') }}" class="list-group-item list-group-item-action {% if active_page=='resume_history' %}active{% endif %}"><i class="fas fa-clock-rotate-left"></i>Resume History</a>
+        <a href="{{ url_for('dashboard.adaptive_quizzes') }}" class="list-group-item list-group-item-action {% if active_page=='quiz' %}active{% endif %}"><i class="fas fa-brain"></i>Quizzes</a>
+
+        <div class="vid-sidebar-title">Learning</div>
+        <a href="{{ url_for('dashboard.learning_paths_page') }}" class="list-group-item list-group-item-action {% if active_page=='learning' %}active{% endif %}"><i class="fas fa-route"></i>Learning Paths</a>
+        <a href="{{ url_for('dashboard.study_planner') }}" class="list-group-item list-group-item-action {% if active_page=='study' %}active{% endif %}"><i class="fas fa-calendar-check"></i>Study Planner</a>
+        <a href="{{ url_for('dashboard.ai_mentor') }}" class="list-group-item list-group-item-action {% if active_page=='mentor' %}active{% endif %}"><i class="fas fa-comments"></i>Mentor</a>
+        <a href="{{ url_for('dashboard.ai_recommendations') }}" class="list-group-item list-group-item-action {% if active_page in ['recommend','roadmap','internships'] %}active{% endif %}"><i class="fas fa-lightbulb"></i>Recommendations</a>
+        <a href="{{ url_for('dashboard.career_roadmaps') }}" class="list-group-item list-group-item-action {% if active_page=='roadmap' %}active{% endif %}"><i class="fas fa-map"></i>Career Roadmap</a>
+
+        <div class="vid-sidebar-title">Insights</div>
+        <a href="{{ url_for('dashboard.analytics') }}" class="list-group-item list-group-item-action {% if active_page=='analytics' %}active{% endif %}"><i class="fas fa-chart-line"></i>Analytics</a>
+        <a href="{{ url_for('dashboard.weak_subject_analysis') }}" class="list-group-item list-group-item-action {% if active_page=='weak' %}active{% endif %}"><i class="fas fa-triangle-exclamation"></i>Weak Subjects</a>
+
+        <div class="vid-sidebar-title">Account</div>
+        <a href="{{ url_for('auth.logout') }}" class="list-group-item list-group-item-action text-danger"><i class="fas fa-right-from-bracket"></i>Logout</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile sidebar (offcanvas) -->
+  <div class="d-lg-none">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarOffcanvas" aria-controls="sidebarOffcanvas">
+        <i class="fas fa-bars me-2"></i>Menu
+      </button>
+    </div>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas" aria-labelledby="sidebarOffcanvasLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="sidebarOffcanvasLabel">Vidyastra</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="dashboard-sidebar list-group">
+          <div class="vid-sidebar-title">Main</div>
+          <a href="{{ url_for('dashboard.home') }}" class="list-group-item list-group-item-action {% if active_page=='home' %}active{% endif %}"><i class="fas fa-house"></i>Dashboard</a>
+          <a href="{{ url_for('main.resume_analyzer') }}" class="list-group-item list-group-item-action {% if active_page=='resume' %}active{% endif %}"><i class="fas fa-file-lines"></i>Resume Analyzer</a>
+          <a href="{{ url_for('dashboard.resume_history') }}" class="list-group-item list-group-item-action {% if active_page=='resume_history' %}active{% endif %}"><i class="fas fa-clock-rotate-left"></i>Resume History</a>
+          <a href="{{ url_for('dashboard.adaptive_quizzes') }}" class="list-group-item list-group-item-action {% if active_page=='quiz' %}active{% endif %}"><i class="fas fa-brain"></i>Quizzes</a>
+
+          <div class="vid-sidebar-title">Learning</div>
+          <a href="{{ url_for('dashboard.learning_paths_page') }}" class="list-group-item list-group-item-action {% if active_page=='learning' %}active{% endif %}"><i class="fas fa-route"></i>Learning Paths</a>
+          <a href="{{ url_for('dashboard.study_planner') }}" class="list-group-item list-group-item-action {% if active_page=='study' %}active{% endif %}"><i class="fas fa-calendar-check"></i>Study Planner</a>
+          <a href="{{ url_for('dashboard.ai_mentor') }}" class="list-group-item list-group-item-action {% if active_page=='mentor' %}active{% endif %}"><i class="fas fa-comments"></i>Mentor</a>
+          <a href="{{ url_for('dashboard.ai_recommendations') }}" class="list-group-item list-group-item-action {% if active_page in ['recommend','roadmap','internships'] %}active{% endif %}"><i class="fas fa-lightbulb"></i>Recommendations</a>
+          <a href="{{ url_for('dashboard.career_roadmaps') }}" class="list-group-item list-group-item-action {% if active_page=='roadmap' %}active{% endif %}"><i class="fas fa-map"></i>Career Roadmap</a>
+
+          <div class="vid-sidebar-title">Insights</div>
+          <a href="{{ url_for('dashboard.analytics') }}" class="list-group-item list-group-item-action {% if active_page=='analytics' %}active{% endif %}"><i class="fas fa-chart-line"></i>Analytics</a>
+          <a href="{{ url_for('dashboard.weak_subject_analysis') }}" class="list-group-item list-group-item-action {% if active_page=='weak' %}active{% endif %}"><i class="fas fa-triangle-exclamation"></i>Weak Subjects</a>
+
+          <div class="vid-sidebar-title">Account</div>
+          <a href="{{ url_for('auth.logout') }}" class="list-group-item list-group-item-action text-danger"><i class="fas fa-right-from-bracket"></i>Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-9 col-xl-10">
+    {% block dashboard_content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{
+  "known_skills": [
+    "python", "javascript", "java", "flask", "django", "react", "node", "html", "css",
+    "sql", "mongodb", "mysql", "postgresql", "docker", "aws", "git", "dsa",
+    "data structures", "algorithms", "dbms", "operating systems", "os", "nlp",
+    "machine learning", "tensorflow", "pytorch", "system design", "rest api",
+    "ci/cd", "render", "huggingface", "transformers"
+  ],
+  "roles": {
+    "software_engineer": {
+      "required_skills": ["DSA", "DBMS", "Operating Systems", "Python or Java", "Git"],
+      "recommended_skills": ["System Design", "SQL", "REST APIs", "Docker"]
+    },
+    "backend_engineer": {
+      "required_skills": ["Python or Java", "SQL", "REST APIs", "DSA"],
+      "recommended_skills": ["Docker", "AWS", "System Design", "Redis"]
+    },
+    "frontend_developer": {
+      "required_skills": ["HTML", "CSS", "JavaScript", "React"],
+      "recommended_skills": ["TypeScript", "Git", "Responsive design"]
+    },
+    "full_stack_developer": {
+      "required_skills": ["HTML", "CSS", "JavaScript", "Python or Node", "SQL", "DSA"],
+      "recommended_skills": ["React", "Flask or Django", "Docker", "REST APIs"]
+    },
+    "data_scientist": {
+      "required_skills": ["Python", "SQL", "Statistics", "Machine Learning"],
+      "recommended_skills": ["Pandas", "Scikit-learn", "Data visualization"]
+    }
+  },
+  "inference_rules": [
+    {
+      "has_any": ["flask", "python"],
+      "lacks_any": ["docker", "aws", "deployment", "ci/cd"],
+      "recommend": ["Docker", "AWS", "CI/CD", "Render deployment"],
+      "reason": "You have Flask experience but no deployment/DevOps signals on your resume"
+    },
+    {
+      "has_any": ["javascript", "js"],
+      "lacks_any": ["react", "vue", "angular"],
+      "recommend": ["React", "TypeScript"],
+      "reason": "JavaScript without a modern frontend framework"
+    },
+    {
+      "has_any": ["nlp", "natural language", "resume analyzer"],
+      "lacks_any": ["transformers", "huggingface", "bert"],
+      "recommend": ["Transformers", "HuggingFace", "Prompt Engineering"],
+      "reason": "NLP project experience can be strengthened with modern LLM tooling"
+    },
+    {
+      "text_contains": ["project", "built", "developed"],
+      "lacks_any": ["github", "git"],
+      "recommend": ["Git", "GitHub portfolio"],
+      "reason": "Show version control and public project links"
+    }
+  ]
+}

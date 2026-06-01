@@ -1,0 +1,252 @@
+[
+  {
+    "id": "resume-1",
+    "topics": [
+      "resume"
+    ],
+    "keywords": [
+      "resume",
+      "cv",
+      "ats"
+    ],
+    "question_patterns": [
+      "improve my resume",
+      "resume tips"
+    ],
+    "answer": "Use a clean one-page layout with clear sections: Contact, Summary, Education, Skills, Projects, Experience. Match keywords from the job description. Quantify impact (users, latency, revenue). Use action verbs: Built, Designed, Optimized."
+  },
+  {
+    "id": "placement-1",
+    "topics": [
+      "placement",
+      "career"
+    ],
+    "keywords": [
+      "placement",
+      "placements",
+      "campus"
+    ],
+    "question_patterns": [
+      "prepare for placements"
+    ],
+    "answer": "Placement prep: (1) DSA daily \u2014 arrays, trees, graphs. (2) CS core \u2014 DBMS, OS, networks. (3) 2\u20133 STAR project stories. (4) Mock interviews weekly. (5) Apply early with tailored resumes."
+  },
+  {
+    "id": "python-1",
+    "topics": [
+      "python"
+    ],
+    "keywords": [
+      "python",
+      "pip",
+      "virtualenv"
+    ],
+    "answer": "Master Python basics: data types, functions, OOP, file I/O. Practice on LeetCode easy/medium. Build a small Flask API. Read the official docs and PEP 8 style."
+  },
+  {
+    "id": "flask-1",
+    "topics": [
+      "flask"
+    ],
+    "keywords": [
+      "flask",
+      "blueprint",
+      "jinja"
+    ],
+    "answer": "Flask: use application factory, blueprints, and config classes. Add Flask-Login for auth, validate inputs, and return JSON for APIs. Deploy with Gunicorn + Docker on Render or AWS."
+  },
+  {
+    "id": "js-1",
+    "topics": [
+      "javascript"
+    ],
+    "keywords": [
+      "javascript",
+      "js",
+      "dom"
+    ],
+    "answer": "Learn ES6+, async/await, fetch API, and DOM manipulation. Build a todo or weather app. Then move to React for component-based UIs."
+  },
+  {
+    "id": "react-1",
+    "topics": [
+      "react"
+    ],
+    "keywords": [
+      "react",
+      "hooks",
+      "jsx"
+    ],
+    "answer": "React: components, props, state, useEffect, and React Router. Build a dashboard or portfolio site. Connect to a REST API you built with Flask."
+  },
+  {
+    "id": "dsa-1",
+    "topics": [
+      "dsa"
+    ],
+    "keywords": [
+      "dsa",
+      "leetcode",
+      "algorithm"
+    ],
+    "answer": "DSA roadmap: arrays \u2192 strings \u2192 linked lists \u2192 stacks/queues \u2192 trees \u2192 graphs \u2192 DP. Solve 2 problems daily. Track patterns (two pointers, sliding window, BFS/DFS)."
+  },
+  {
+    "id": "dbms-1",
+    "topics": [
+      "dbms",
+      "sql"
+    ],
+    "keywords": [
+      "dbms",
+      "normalization",
+      "acid"
+    ],
+    "answer": "DBMS: normalization, keys, joins, indexing, transactions (ACID). Practice SQL on HackerRank. Understand when to use SQL vs MongoDB."
+  },
+  {
+    "id": "sql-1",
+    "topics": [
+      "sql"
+    ],
+    "keywords": [
+      "sql",
+      "query",
+      "join"
+    ],
+    "answer": "SQL essentials: SELECT, WHERE, JOIN, GROUP BY, HAVING, subqueries, window functions. Index columns used in WHERE/JOIN. Explain query plans for interviews."
+  },
+  {
+    "id": "os-1",
+    "topics": [
+      "operating systems"
+    ],
+    "keywords": [
+      "os",
+      "process",
+      "thread",
+      "deadlock"
+    ],
+    "answer": "OS topics: processes vs threads, scheduling, memory (paging, virtual memory), deadlocks, synchronization. Revise with OS quizzes on Vidyastra."
+  },
+  {
+    "id": "interview-1",
+    "topics": [
+      "interview"
+    ],
+    "keywords": [
+      "interview",
+      "technical",
+      "hr"
+    ],
+    "answer": "Technical interviews: clarify requirements, discuss brute force then optimize, write clean code, test edge cases. Behavioral: use STAR (Situation, Task, Action, Result)."
+  },
+  {
+    "id": "internship-1",
+    "topics": [
+      "internship"
+    ],
+    "keywords": [
+      "internship",
+      "apply"
+    ],
+    "answer": "For internships: polish GitHub (README, demos), tailor resume per role, apply on LinkedIn/Wellfound/company portals, and follow up politely after 1 week."
+  },
+  {
+    "id": "github-1",
+    "topics": [
+      "github"
+    ],
+    "keywords": [
+      "github",
+      "open source",
+      "portfolio"
+    ],
+    "answer": "Improve GitHub: pin 3 best repos, add README with setup/screenshots, use meaningful commits, add LICENSE, and contribute to good-first-issue projects."
+  },
+  {
+    "id": "linkedin-1",
+    "topics": [
+      "linkedin"
+    ],
+    "keywords": [
+      "linkedin",
+      "profile",
+      "network"
+    ],
+    "answer": "LinkedIn: professional photo, headline with role + stack, summary with projects, list skills, request recommendations from mentors/peers, post weekly learnings."
+  },
+  {
+    "id": "html-1",
+    "topics": [
+      "html",
+      "css"
+    ],
+    "keywords": [
+      "html",
+      "css",
+      "responsive"
+    ],
+    "answer": "HTML/CSS: semantic tags, flexbox/grid, mobile-first CSS, accessibility basics. Build a responsive landing page before frameworks."
+  },
+  {
+    "id": "roadmap-1",
+    "topics": [
+      "roadmap",
+      "career"
+    ],
+    "keywords": [
+      "roadmap",
+      "career path",
+      "become"
+    ],
+    "answer": "Pick a target role (SDE, Full Stack, Data Scientist). Map required skills, fill gaps with courses + projects, take weekly quizzes, and track progress on your dashboard."
+  },
+  {
+    "id": "ml-1",
+    "topics": [
+      "machine learning"
+    ],
+    "keywords": [
+      "machine learning",
+      "ml",
+      "model"
+    ],
+    "answer": "ML path: Python \u2192 NumPy/Pandas \u2192 scikit-learn \u2192 one deep learning framework. Complete a Kaggle competition and document your pipeline in a notebook."
+  },
+  {
+    "id": "nlp-1",
+    "topics": [
+      "nlp"
+    ],
+    "keywords": [
+      "nlp",
+      "transformers",
+      "huggingface"
+    ],
+    "answer": "For NLP projects: learn tokenization, embeddings, and HuggingFace Transformers. Fine-tune a small model and deploy with a simple API."
+  },
+  {
+    "id": "system-design-1",
+    "topics": [
+      "system design"
+    ],
+    "keywords": [
+      "system design",
+      "scalability"
+    ],
+    "answer": "System design: requirements, API design, database choice, caching, load balancing, message queues. Study real architectures (URL shortener, chat, feed)."
+  },
+  {
+    "id": "general-1",
+    "topics": [
+      "study"
+    ],
+    "keywords": [
+      "study",
+      "learn",
+      "focus"
+    ],
+    "answer": "Study effectively: set 2-hour blocks, one topic per block, active recall via quizzes, and review mistakes within 48 hours. Use the Study Planner for a 7-day schedule."
+  }
+]

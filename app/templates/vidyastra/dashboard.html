@@ -1,0 +1,212 @@
+{% extends "vidyastra/dashboard_layout.html" %}
+{% block title %}Vidyastra Dashboard{% endblock %}
+{% block dashboard_content %}
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+  <div>
+    <div class="text-muted small mb-2">{{ now_label }}</div>
+    <h2 class="text-white mb-1">Welcome back, {{ profile.name or "Student" }} <span class="ms-1">👋</span></h2>
+    <p class="text-muted mb-0">Ready to continue learning today?</p>
+  </div>
+  <div class="d-flex gap-2 flex-wrap">
+    <a href="{{ url_for('dashboard.adaptive_quizzes') }}" class="btn btn-primary"><i class="fas fa-brain me-2"></i>Take a Quiz</a>
+    <a href="{{ url_for('main.resume_analyzer') }}" class="btn btn-outline-secondary"><i class="fas fa-file-lines me-2"></i>Resume Analyzer</a>
+    <a href="{{ url_for('dashboard.resume_history') }}" class="btn btn-outline-secondary"><i class="fas fa-clock-rotate-left me-2"></i>Resume History</a>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card p-4">
+      <div class="d-flex justify-content-between align-items-start">
+        <small class="text-muted">Resume ATS Score</small>
+        <i class="fas fa-shield-halved text-primary"></i>
+      </div>
+      <div class="d-flex align-items-baseline gap-2 mt-2">
+        <h3 class="text-white mb-0">{{ latest_ats }}%</h3>
+        <span class="text-muted small">last run</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-4">
+      <div class="d-flex justify-content-between align-items-start">
+        <small class="text-muted">Quiz Accuracy</small>
+        <i class="fas fa-bullseye text-success"></i>
+      </div>
+      <div class="d-flex align-items-baseline gap-2 mt-2">
+        <h3 class="text-white mb-0">{{ quiz_accuracy }}%</h3>
+        <span class="text-muted small">avg</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-4">
+      <div class="d-flex justify-content-between align-items-start">
+        <small class="text-muted">Learning Streak</small>
+        <i class="fas fa-fire text-warning"></i>
+      </div>
+      <div class="d-flex align-items-baseline gap-2 mt-2">
+        <h3 class="text-white mb-0">{{ learning_streak }}</h3>
+        <span class="text-muted small">days</span>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-4">
+      <div class="d-flex justify-content-between align-items-start">
+        <small class="text-muted">Quiz Attempts</small>
+        <i class="fas fa-chart-simple text-info"></i>
+      </div>
+      <div class="d-flex align-items-baseline gap-2 mt-2">
+        <h3 class="text-white mb-0">{{ metrics.attempts }}</h3>
+        <span class="text-muted small">total</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card p-3 mb-3 vid-activity-card">
+  <div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+    <div>
+      <h5 class="text-white mb-1">Learning Activity</h5>
+      <p class="text-muted small mb-0">Your quiz and resume activity over the last year</p>
+    </div>
+    <div class="d-flex flex-wrap gap-2 vid-stat-pills">
+      <span class="badge rounded-pill vid-stat-pill">Streak <strong>{{ activity_stats.current_streak }}</strong> days</span>
+      <span class="badge rounded-pill vid-stat-pill">Best <strong>{{ activity_stats.longest_streak }}</strong></span>
+      <span class="badge rounded-pill vid-stat-pill">Quizzes <strong>{{ activity_stats.quizzes_solved }}</strong></span>
+      <span class="badge rounded-pill vid-stat-pill">Study <strong>{{ activity_stats.study_time_minutes }}</strong>m</span>
+      <span class="badge rounded-pill vid-stat-pill">ATS <strong>{{ activity_stats.resume_score }}%</strong></span>
+    </div>
+  </div>
+  <div id="activityHeatmap" class="vid-heatmap-wrap"></div>
+  <div class="d-flex justify-content-end gap-2 mt-2 small text-muted">
+    <span>Less</span>
+    <span class="vid-heat-cell level-0"></span>
+    <span class="vid-heat-cell level-1"></span>
+    <span class="vid-heat-cell level-2"></span>
+    <span class="vid-heat-cell level-3"></span>
+    <span class="vid-heat-cell level-4"></span>
+    <span>More</span>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-7">
+    <div class="card p-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="text-white mb-0">Learning Progress</h5>
+        <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('dashboard.analytics') }}">View analytics</a>
+      </div>
+      <div style="height: 280px;">
+        <canvas id="progressChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card p-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h5 class="text-white mb-0">Weak Subjects</h5>
+        <a class="btn btn-outline-secondary btn-sm" href="{{ url_for('dashboard.weak_subject_analysis') }}">Details</a>
+      </div>
+      {% if weak_topics %}
+        <ul class="mb-0 text-muted" style="padding-left: 1rem;">
+        {% for item in weak_topics %}
+          <li>
+            <span class="text-white">{{ item.topic }}</span>
+            <span class="text-muted">- {{ item.avg_score }}%</span>
+            {% if item.reasons %}
+              <div class="small text-muted mt-1">{{ item.reasons|join(' • ') }}</div>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-muted mb-0">No weak subjects detected yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="row g-3 mt-1">
+  <div class="col-lg-4">
+    <div class="card p-3 h-100">
+      <h5 class="text-white mb-3">Upcoming Study Tasks</h5>
+      <ul class="mb-0 text-muted">
+        {% for task in upcoming_tasks %}
+        <li class="mb-2">{{ task }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card p-3 h-100">
+      <h5 class="text-white mb-3">Recommended Actions</h5>
+      <ul class="mb-0 text-muted">
+        {% for action in recommended_actions %}
+        <li class="mb-2">{{ action }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card p-3 h-100">
+      <h5 class="text-white mb-3">Activity Timeline</h5>
+      {% if activity_timeline %}
+      <ul class="list-unstyled mb-0">
+        {% for item in activity_timeline %}
+        <li class="d-flex gap-2 mb-3">
+          <span class="text-primary"><i class="fas {{ item.icon }}"></i></span>
+          <div>
+            <div class="text-white small">{{ item.title }}</div>
+            <div class="text-muted small">{{ item.meta }}</div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="text-muted mb-0">Complete a quiz or resume analysis to see activity here.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="row g-3 mt-1">
+  {% for card in recommendation_cards %}
+  <div class="col-md-4">
+    <a href="{{ card.href }}" class="text-decoration-none">
+      <div class="card p-3 h-100 landing-mini-card">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <i class="fas {{ card.icon }} text-primary"></i>
+          <h6 class="text-white mb-0">{{ card.title }}</h6>
+        </div>
+        <p class="text-muted small mb-0">{{ card.body }}</p>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+{% if settings.mentor_fab %}
+  <button id="chatToggle" class="btn btn-primary chatbot-fab"><i class="fas fa-robot"></i></button>
+  <div id="chatPanel" class="card chatbot-panel d-none">
+    <div class="card-body">
+      <h6 class="text-white">AI Mentor</h6>
+      <div id="chatMessages" class="chat-messages mb-2"></div>
+      <div class="input-group">
+        <input id="chatInput" class="form-control" placeholder="Ask your academic or career question">
+        <button id="chatSend" class="btn btn-primary">Send</button>
+      </div>
+      <div id="chatError" class="text-danger small mt-2 d-none"></div>
+    </div>
+  </div>
+{% endif %}
+{% endblock %}
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/vidyastra/dashboard.js') }}"></script>
+<script>
+  window.quizScores = [{% for q in quiz_results %}{{ q.score|default(0) }}{% if not loop.last %},{% endif %}{% endfor %}];
+  window.activityHeatmap = {{ activity_heatmap_json|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/vidyastra/activity_heatmap.js') }}"></script>
+{% endblock %}

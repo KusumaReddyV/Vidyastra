@@ -1,0 +1,216 @@
+{% extends "base.html" %}
+{% block title %}Vidyastra - AI Learning & Career Platform{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/vidyastra/vidyastra.css') }}">
+{% endblock %}
+{% block hero %}
+<section class="vid-hero py-5">
+  <div class="container text-center">
+    <h1 class="display-4 fw-bold text-white">Your AI-Powered Learning & Career Companion</h1>
+    <p class="lead text-muted mt-3">Analyze resumes, detect weak subjects, generate adaptive quizzes, track progress, and accelerate your career using AI.</p>
+    <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+      <a href="{{ url_for('auth.signup') }}" class="btn btn-primary">Get Started</a>
+      <a href="#features" class="btn btn-outline-secondary">Explore Features</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block content %}
+<section id="about" class="mb-5">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-6">
+      <h3 class="text-white">About Vidyastra</h3>
+      <p class="text-muted">
+        Vidyastra is your AI-powered student learning and career companion:
+        personalized study plans, weak-subject detection, adaptive quizzes, resume insights,
+        and mentoring in one place.
+      </p>
+      <div class="d-flex gap-2 flex-wrap mt-3">
+        <span class="feature-chip"><i class="fas fa-brain me-2 text-primary"></i>Personalized learning</span>
+        <span class="feature-chip"><i class="fas fa-rocket me-2 text-success"></i>Career guidance</span>
+        <span class="feature-chip"><i class="fas fa-shield-halved me-2 text-warning"></i>Resume intelligence</span>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <div class="card p-4">
+        <h5 class="text-white mb-3"><i class="fas fa-chart-pie me-2 text-primary"></i>Dashboard Preview</h5>
+        <div class="row g-3">
+          <div class="col-6"><div class="p-3 rounded-4 bg-secondary"><div class="text-muted small">Weak Topics</div><div class="fw-bold">Top 3</div></div></div>
+          <div class="col-6"><div class="p-3 rounded-4 bg-secondary"><div class="text-muted small">Quiz Avg</div><div class="fw-bold">~78%</div></div></div>
+          <div class="col-6"><div class="p-3 rounded-4 bg-secondary"><div class="text-muted small">Skill Growth</div><div class="fw-bold">+12%</div></div></div>
+          <div class="col-6"><div class="p-3 rounded-4 bg-secondary"><div class="text-muted small">Streak</div><div class="fw-bold">7 days</div></div></div>
+        </div>
+        <p class="text-muted small mt-3 mb-0">Interactive charts + AI mentor widget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <section id="features" class="features-section py-5">
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <span class="feature-chip mb-3 d-inline-block">
+            Features
+        </span>
+
+        <h2 class="text-white fw-bold">
+            Everything You Need
+        </h2>
+
+        <p class="text-muted mt-3 mx-auto" style="max-width: 680px;">
+            Learn, practice, improve resumes,
+            and grow your career using AI-powered tools.
+        </p>
+
+    </div>
+
+    <div class="vertical-features">
+
+        <div class="feature-item">
+
+            <div class="feature-icon-box">
+                <i class="fas fa-file-alt"></i>
+            </div>
+
+            <div>
+                <h4 class="text-white">
+                    Resume Analysis
+                </h4>
+
+                <p class="text-muted mb-0">
+                    Improve resumes with ATS scoring
+                    and AI suggestions.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="feature-item">
+
+            <div class="feature-icon-box">
+                <i class="fas fa-brain"></i>
+            </div>
+
+            <div>
+                <h4 class="text-white">
+                    Adaptive Quizzes
+                </h4>
+
+                <p class="text-muted mb-0">
+                    Practice with quizzes tailored
+                    to your learning level.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="feature-item">
+
+            <div class="feature-icon-box">
+                <i class="fas fa-robot"></i>
+            </div>
+
+            <div>
+                <h4 class="text-white">
+                    AI Mentor
+                </h4>
+
+                <p class="text-muted mb-0">
+                    Get instant guidance for learning
+                    and career growth.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<section class="card p-4 mb-5">
+  <h4 class="text-white mb-3"><i class="fas fa-route me-2 text-primary"></i>How It Works</h4>
+  <div class="row g-3">
+    <div class="col-md-6">
+      <div class="p-3 bg-secondary rounded-4">
+        <div class="fw-bold">1. Create your profile</div>
+        <div class="text-muted small">Name, department, interests, learning preferences.</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-3 bg-secondary rounded-4">
+        <div class="fw-bold">2. Upload resume</div>
+        <div class="text-muted small">Get ATS scoring + actionable improvements.</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-3 bg-secondary rounded-4">
+        <div class="fw-bold">3. Take adaptive quizzes</div>
+        <div class="text-muted small">Weak topics are detected automatically.</div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="p-3 bg-secondary rounded-4">
+        <div class="fw-bold">4. Learn with AI</div>
+        <div class="text-muted small">Study plans, roadmaps, mentor answers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="row g-3 mb-5" id="testimonials">
+  <div class="col-lg-6">
+    <div class="card p-4 h-100">
+      <h5 class="text-white"><i class="fas fa-quote-left me-2 text-primary"></i>Testimonials</h5>
+      <p class="text-muted mb-0">"Vidyastra helped me identify weak subjects and secure my first internship."</p>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card p-4 h-100">
+      <h5 class="text-white"><i class="fas fa-sparkles me-2 text-success"></i>Statistics</h5>
+      <div class="row g-3 mt-2">
+        <div class="col-6"><div class="p-3 bg-secondary rounded-4"><div class="text-muted small">Students</div><div class="fw-bold"><span class="counter" data-target="12000">0</span>+</div></div></div>
+        <div class="col-6"><div class="p-3 bg-secondary rounded-4"><div class="text-muted small">Quizzes Generated</div><div class="fw-bold"><span class="counter" data-target="45000">0</span>+</div></div></div>
+        <div class="col-6"><div class="p-3 bg-secondary rounded-4"><div class="text-muted small">AI Recommendations</div><div class="fw-bold"><span class="counter" data-target="28000">0</span>+</div></div></div>
+        <div class="col-6"><div class="p-3 bg-secondary rounded-4"><div class="text-muted small">Learning Resources</div><div class="fw-bold"><span class="counter" data-target="9000">0</span>+</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mb-5" id="stats">
+  <div class="card p-4">
+    <h4 class="text-white"><i class="fas fa-gem me-2 text-primary"></i>Ready to level up?</h4>
+    <p class="text-muted mb-3">Start with a profile and get your personalized learning roadmap.</p>
+    <div class="d-flex gap-3 flex-wrap">
+      <a href="{{ url_for('auth.signup') }}" class="btn btn-primary btn-lg">Create Free Account</a>
+      <a href="{{ url_for('main.resume_analyzer') }}" class="btn btn-outline-secondary btn-lg">Try Resume Analyzer</a>
+    </div>
+  </div>
+</section>
+
+<section class="mb-2">
+  <div class="text-center text-muted small py-3">
+    <div class="mb-1">
+      <i class="fas fa-lock me-1"></i>Secure learning & career insights
+    </div>
+    <div class="d-flex justify-content-center gap-3 mb-2">
+      <a class="text-muted text-decoration-none" href="#about">About</a>
+      <a class="text-muted text-decoration-none" href="#features">Features</a>
+      <a class="text-muted text-decoration-none" href="{{ url_for('auth.login') }}">Login</a>
+      <a class="text-muted text-decoration-none" href="{{ url_for('auth.signup') }}">Signup</a>
+    </div>
+    <div>
+      Vidyastra &copy; 2026 • AI-Powered Learning & Career Platform
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/vidyastra/landing.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,72 @@
+{
+  "frontend": {
+    "summary": "Master HTML, CSS, JavaScript, and React for modern UI development.",
+    "phases": [
+      {"phase": 1, "title": "Web fundamentals", "topics": ["HTML5", "CSS layout", "Flexbox/Grid"]},
+      {"phase": 2, "title": "JavaScript core", "topics": ["ES6+", "DOM", "Fetch API"]},
+      {"phase": 3, "title": "React", "topics": ["Components", "Hooks", "State management"]}
+    ],
+    "courses": ["freeCodeCamp Responsive Web Design", "React official docs", "JavaScript.info"],
+    "certifications": ["Meta Front-End Developer (Coursera)"]
+  },
+  "backend": {
+    "summary": "Build APIs, databases, and server-side logic with Python and Flask.",
+    "phases": [
+      {"phase": 1, "title": "Python & APIs", "topics": ["Python", "REST", "Flask"]},
+      {"phase": 2, "title": "Databases", "topics": ["SQL", "MongoDB", "ORM basics"]},
+      {"phase": 3, "title": "Production", "topics": ["Docker", "Auth", "Testing"]}
+    ],
+    "courses": ["Flask documentation", "MongoDB University", "System design primer"],
+    "certifications": ["AWS Cloud Practitioner"]
+  },
+  "full_stack": {
+    "summary": "Combine frontend and backend skills for end-to-end applications.",
+    "phases": [
+      {"phase": 1, "title": "Foundation", "topics": ["HTML/CSS/JS", "Python", "Git"]},
+      {"phase": 2, "title": "Stack", "topics": ["React", "Flask", "MongoDB"]},
+      {"phase": 3, "title": "Ship", "topics": ["Deployment", "CI/CD", "Portfolio"]}
+    ],
+    "courses": ["Full-stack open (MOOC)", "The Odin Project"],
+    "certifications": []
+  },
+  "python": {
+    "summary": "From syntax to libraries for automation and backend work.",
+    "phases": [
+      {"phase": 1, "title": "Core Python", "topics": ["Syntax", "OOP", "Modules"]},
+      {"phase": 2, "title": "Libraries", "topics": ["NumPy", "Pandas", "Requests"]},
+      {"phase": 3, "title": "Applications", "topics": ["Flask", "Scripting", "Testing"]}
+    ],
+    "courses": ["Python official tutorial", "Automate the Boring Stuff"],
+    "certifications": ["PCAP (optional)"]
+  },
+  "data_science": {
+    "summary": "Statistics, SQL, and ML for data-driven roles.",
+    "phases": [
+      {"phase": 1, "title": "Math & SQL", "topics": ["Statistics", "SQL", "Pandas"]},
+      {"phase": 2, "title": "ML basics", "topics": ["Scikit-learn", "Visualization"]},
+      {"phase": 3, "title": "Projects", "topics": ["Kaggle", "Portfolio notebooks"]}
+    ],
+    "courses": ["Kaggle Learn", "StatQuest", "fast.ai intro"],
+    "certifications": ["Google Data Analytics"]
+  },
+  "machine_learning": {
+    "summary": "Classical ML through deep learning and MLOps basics.",
+    "phases": [
+      {"phase": 1, "title": "ML foundations", "topics": ["Regression", "Classification", "Evaluation"]},
+      {"phase": 2, "title": "Deep learning", "topics": ["Neural nets", "PyTorch or TensorFlow"]},
+      {"phase": 3, "title": "NLP/CV", "topics": ["Transformers", "HuggingFace"]}
+    ],
+    "courses": ["Andrew Ng ML", "fast.ai", "HuggingFace course"],
+    "certifications": []
+  },
+  "software_engineering": {
+    "summary": "DSA, systems, and engineering practices for SDE roles.",
+    "phases": [
+      {"phase": 1, "title": "DSA", "topics": ["Arrays", "Trees", "Graphs", "DP"]},
+      {"phase": 2, "title": "CS core", "topics": ["DBMS", "OS", "Networks"]},
+      {"phase": 3, "title": "Interview prep", "topics": ["System design", "Behavioral", "Mock interviews"]}
+    ],
+    "courses": ["NeetCode / Striver", "Grokking System Design", "LeetCode patterns"],
+    "certifications": []
+  }
+}

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}System Status - Vidyastra{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold text-white mb-3">System Status</h1>
+                <p class="text-muted">Real-time diagnostics for Vidyastra platform components</p>
+            </div>
+
+            <div id="statusContainer" class="vstack gap-3">
+                <div class="text-center py-5">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <p class="text-muted mt-3">Loading system status...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+async function loadSystemStatus() {
+    try {
+        const response = await fetch('/system-status');
+        const status = await response.json();
+        renderStatus(status);
+    } catch (error) {
+        document.getElementById('statusContainer').innerHTML = `
+            <div class="alert alert-danger">
+                <h5 class="alert-heading">Error Loading Status</h5>
+                <p class="mb-0">Failed to fetch system status: ${error.message}</p>
+            </div>
+        `;
+    }
+}
+
+function renderStatus(status) {
+    const container = document.getElementById('statusContainer');
+    
+    const getStatusBadge = (statusValue) => {
+        if (statusValue === 'operational' || statusValue === 'running' || statusValue === 'connected' || statusValue === 'configured') {
+            return '<span class="badge bg-success">✓ Connected</span>';
+        } else if (statusValue === 'error') {
+            return '<span class="badge bg-danger">✗ Error</span>';
+        } else if (statusValue === 'not_configured') {
+            return '<span class="badge bg-warning">⚠ Not Configured</span>';
+        }
+        return `<span class="badge bg-secondary">${statusValue}</span>`;
+    };
+
+    const getStatusCard = (title, statusValue, details = {}) => {
+        let detailsHtml = '';
+        for (const [key, value] of Object.entries(details)) {
+            if (value !== undefined && value !== null && value !== '') {
+                detailsHtml += `<div class="small text-muted mb-1"><strong>${key}:</strong> ${value}</div>`;
+            }
+        }
+        
+        return `
+            <div class="card p-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="text-white mb-0">${title}</h5>
+                    ${getStatusBadge(statusValue)}
+                </div>
+                ${detailsHtml}
+            </div>
+        `;
+    };
+
+    let html = '';
+    
+    // Flask Status
+    html += getStatusCard('Flask Running', status.flask, {
+        'Timestamp': status.timestamp
+    });
+    
+    // MongoDB Status
+    const mongoDetails = {};
+    if (status.mongodb_uri) mongoDetails['URI'] = status.mongodb_uri;
+    if (status.mongodb_error) mongoDetails['Error'] = status.mongodb_error;
+    html += getStatusCard('MongoDB Connected', status.mongodb, mongoDetails);
+    
+    // Authentication Status
+    const authDetails = { 'Provider': status.auth_provider };
+    if (status.auth_error) authDetails['Error'] = status.auth_error;
+    html += getStatusCard('Authentication Working', status.authentication, authDetails);
+    
+    // Resume Analyzer Status
+    const resumeDetails = {};
+    if (status.resume_analyzer_error) resumeDetails['Error'] = status.resume_analyzer_error;
+    html += getStatusCard('Resume Analyzer', status.resume_analyzer, resumeDetails);
+    
+    // Quiz Engine Status
+    const quizDetails = {};
+    if (status.quiz_bank_subjects) quizDetails['Subjects'] = status.quiz_bank_subjects.join(', ');
+    if (status.quiz_bank_total_questions) quizDetails['Total Questions'] = status.quiz_bank_total_questions;
+    if (status.quiz_engine_error) quizDetails['Error'] = status.quiz_engine_error;
+    html += getStatusCard('Quiz Engine', status.quiz_engine, quizDetails);
+    
+    // Refresh button
+    html += `
+        <div class="text-center mt-4">
+            <button onclick="loadSystemStatus()" class="btn btn-outline-primary">
+                <i class="fas fa-sync-alt me-2"></i>Refresh Status
+            </button>
+        </div>
+    `;
+    
+    container.innerHTML = html;
+}
+
+// Load status on page load
+document.addEventListener('DOMContentLoaded', loadSystemStatus);
+
+// Auto-refresh every 30 seconds
+setInterval(loadSystemStatus, 30000);
+</script>
+{% endblock %}

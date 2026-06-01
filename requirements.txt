@@ -1,0 +1,13 @@
+flask
+flask-login
+pymongo
+pymupdf
+spacy
+scikit-learn
+pandas
+numpy
+language-tool-python
+reportlab
+gunicorn
+python-dotenv
+pytest

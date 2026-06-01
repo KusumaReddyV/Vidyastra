@@ -1,0 +1,110 @@
+{% extends "vidyastra/dashboard_layout.html" %}
+{% block title %}Adaptive Quizzes - Vidyastra{% endblock %}
+{% block dashboard_content %}
+<div class="vid-page-nav"><a href="{{ url_for('dashboard.home') }}" class="btn btn-outline-secondary btn-sm"><i class="fas fa-house me-1"></i>Dashboard</a></div>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+  <div>
+    <h3 class="text-white mb-1">Adaptive Quizzes</h3>
+    <p class="text-muted mb-0">Generate a timed 5-minute quiz — opens in a new window with full answer review.</p>
+  </div>
+  <div class="d-flex gap-2">
+    <button class="btn btn-outline-secondary" id="quizResetBtn"><i class="fas fa-rotate-left me-2"></i>Reset</button>
+    <button class="btn btn-primary" id="quizGenerateBtn"><i class="fas fa-wand-magic-sparkles me-2"></i>Generate Quiz</button>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-xl-4">
+    <div class="card p-3">
+      <h6 class="text-white mb-3">Quiz Settings</h6>
+      <div class="row g-2">
+        <div class="col-12">
+          <label class="form-label">Topic</label>
+          <input id="quizTopic" class="form-control" placeholder="python, javascript, dbms..." value="{{ default_quiz_topic or 'python' }}">
+          <div class="form-text text-muted">Tip: try “python”, “sql”, “data structures”.</div>
+        </div>
+        <div class="col-12">
+          <label class="form-label">Difficulty</label>
+          <select id="quizDifficulty" class="form-select">
+            <option value="adaptive" selected>Adaptive</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </div>
+      </div>
+
+      <hr class="border-secondary-subtle my-3">
+
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <div class="text-muted small">Timer (5 min)</div>
+          <div class="text-white fw-semibold"><span id="quizTimer">05:00</span></div>
+        </div>
+        <div class="text-end">
+          <div class="text-muted small">Status</div>
+          <div class="text-white fw-semibold" id="quizStatus">Ready</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-3 mt-3">
+      <h6 class="text-white mb-2">Recent Attempts</h6>
+      {% if quiz_results %}
+        <div class="vstack gap-2">
+          {% for r in quiz_results[:8] %}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="text-muted small">
+                <span class="text-white">{{ r.topic or 'general' }}</span>
+                <span class="text-muted">•</span>
+                <span class="text-muted">{{ r.created_at.strftime('%Y-%m-%d') if r.created_at else '' }}</span>
+              </div>
+              <span class="badge bg-secondary">{{ r.score|default(0) }}%</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="text-muted mb-0">No attempts yet. Generate your first quiz.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="col-xl-8">
+    <div class="card p-3">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="text-white mb-0">Quiz</h6>
+        <div class="d-flex align-items-center gap-3">
+          <div class="d-none" id="quizProgressContainer">
+            <div class="text-muted small">Progress</div>
+            <div class="text-white fw-semibold"><span id="quizProgress">0/0</span></div>
+          </div>
+          <button class="btn btn-outline-primary btn-sm d-none" id="quizSubmitBtn" disabled></button>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress d-none mb-3" id="quizProgressBar" style="height: 6px;">
+        <div class="progress-bar bg-primary" id="quizProgressFill" style="width: 0%"></div>
+      </div>
+
+      <div id="quizLoading" class="d-none">
+        <div class="skeleton-line w-75 mb-2"></div>
+        <div class="skeleton-line w-100 mb-2"></div>
+        <div class="skeleton-line w-90 mb-2"></div>
+        <div class="skeleton-line w-60 mb-2"></div>
+      </div>
+
+      <div id="quizError" class="alert alert-danger border-0 d-none mb-0"></div>
+      <div id="quizEmpty" class="text-muted">Click “Generate Quiz” to start a 5-minute session in a new window.</div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  window.quizHistory = {{ quiz_results_json|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/vidyastra/quizzes.js') }}"></script>
+{% endblock %}
+

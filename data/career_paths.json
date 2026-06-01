@@ -1,0 +1,79 @@
+{
+  "software_engineer": {
+    "title": "Software Engineer (SDE)",
+    "current_stage": "Foundation & portfolio building",
+    "timeline": "6–12 months to internship-ready",
+    "skills_to_acquire": ["DSA", "DBMS", "OS", "System Design", "Git"],
+    "projects_to_build": [
+      "Full-stack CRUD app with auth",
+      "DSA problem tracker with spaced repetition",
+      "Open-source contribution"
+    ],
+    "interview_prep": [
+      "2 DSA problems daily (easy → medium)",
+      "CS fundamentals flashcards",
+      "3 STAR behavioral stories"
+    ],
+    "milestones": ["Complete 50 DSA problems", "Deploy 2 projects", "Mock interview"],
+    "steps": [
+      {"order": 1, "title": "Strengthen fundamentals", "description": "Python/Java, Git, SQL, REST"},
+      {"order": 2, "title": "DSA practice", "description": "Arrays, trees, graphs, timed contests"},
+      {"order": 3, "title": "System design basics", "description": "Scalability, caching, load balancing"},
+      {"order": 4, "title": "Interview loop", "description": "Mock interviews and company-specific prep"}
+    ]
+  },
+  "full_stack_developer": {
+    "title": "Full Stack Developer",
+    "current_stage": "Connecting frontend and backend",
+    "timeline": "8–14 months",
+    "skills_to_acquire": ["React", "Node or Flask", "MongoDB/SQL", "Docker"],
+    "projects_to_build": [
+      "SaaS dashboard with auth",
+      "E-commerce mini store",
+      "Real-time chat or notifications"
+    ],
+    "interview_prep": ["Build full-stack take-home", "Explain API design", "Frontend system questions"],
+    "milestones": ["Ship MERN/Flask+React app", "Add tests and CI"],
+    "steps": [
+      {"order": 1, "title": "Frontend depth", "description": "React, state, responsive UI"},
+      {"order": 2, "title": "Backend APIs", "description": "Auth, validation, databases"},
+      {"order": 3, "title": "Deploy end-to-end", "description": "Docker, cloud hosting, monitoring"}
+    ]
+  },
+  "backend_engineer": {
+    "title": "Backend Engineer",
+    "current_stage": "APIs and data layer focus",
+    "timeline": "6–10 months",
+    "skills_to_acquire": ["Python/Java", "SQL", "Redis", "Docker", "System Design"],
+    "projects_to_build": [
+      "REST API with JWT auth",
+      "Background job worker",
+      "Rate-limited public API"
+    ],
+    "interview_prep": ["API design questions", "Database indexing", "Concurrency basics"],
+    "milestones": ["Production API with tests", "Load testing one endpoint"],
+    "steps": [
+      {"order": 1, "title": "Solid APIs", "description": "Flask/Django/FastAPI patterns"},
+      {"order": 2, "title": "Data & performance", "description": "Indexes, caching, queues"},
+      {"order": 3, "title": "Reliability", "description": "Logging, health checks, deployment"}
+    ]
+  },
+  "data_scientist": {
+    "title": "Data Scientist",
+    "current_stage": "Analytics and ML foundations",
+    "timeline": "10–18 months",
+    "skills_to_acquire": ["Python", "SQL", "Statistics", "ML", "Visualization"],
+    "projects_to_build": [
+      "End-to-end ML notebook with deployment",
+      "A/B test analysis report",
+      "Dashboard with business KPIs"
+    ],
+    "interview_prep": ["Case studies", "ML theory", "SQL window functions"],
+    "milestones": ["Kaggle competition", "Published portfolio analysis"],
+    "steps": [
+      {"order": 1, "title": "Data wrangling", "description": "Pandas, SQL, cleaning"},
+      {"order": 2, "title": "Modeling", "description": "Scikit-learn, evaluation metrics"},
+      {"order": 3, "title": "Communication", "description": "Storytelling with charts and exec summaries"}
+    ]
+  }
+}

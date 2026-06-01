@@ -1,0 +1,135 @@
+{% extends "vidyastra/dashboard_layout.html" %}
+{% block title %}Resume History - Vidyastra{% endblock %}
+{% block dashboard_content %}
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+  <div>
+    <h3 class="text-white mb-1">Resume History</h3>
+    <p class="text-muted mb-0">Track ATS progress, skills gained, and improvements across every upload.</p>
+  </div>
+  <a href="{{ url_for('main.resume_analyzer') }}" class="btn btn-primary">
+    <i class="fas fa-file-lines me-2"></i>Upload New Resume
+  </a>
+</div>
+
+{% if not progress.versions %}
+<div class="card p-5 text-center">
+  <i class="fas fa-clock-rotate-left fa-3x text-primary mb-3"></i>
+  <h5 class="text-white">No resume versions yet</h5>
+  <p class="text-muted mb-4">Each time you analyze a resume, Vidyastra saves a version and learns from your progress.</p>
+  <a href="{{ url_for('main.resume_analyzer') }}" class="btn btn-primary">Analyze your first resume</a>
+</div>
+{% else %}
+
+<div class="row g-3 mb-3">
+  <div class="col-md-3">
+    <div class="card p-4">
+      <small class="text-muted">Latest ATS</small>
+      <h3 class="text-white mb-0">{{ progress.latest_ats }}%</h3>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-4">
+      <small class="text-muted">First ATS</small>
+      <h3 class="text-white mb-0">{{ progress.first_ats }}%</h3>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-4">
+      <small class="text-muted">Keyword coverage</small>
+      <h3 class="text-white mb-0">{{ progress.keyword_coverage_pct }}%</h3>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card p-4">
+      <small class="text-muted">Inferred focus</small>
+      <h6 class="text-white mb-0 mt-2">{{ progress.specialization }}</h6>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-7">
+    <div class="card p-3">
+      <h6 class="text-white mb-2">ATS score trend</h6>
+      <div style="height: 260px;">
+        <canvas id="resumeAtsTrendChart"></canvas>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <div class="card p-3 h-100">
+      <h6 class="text-white mb-2">Personalized recommendations</h6>
+      <ul class="text-muted mb-0">
+        {% for rec in progress.recommendations %}
+        <li class="mb-2">{{ rec }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3 mt-1">
+  <div class="col-lg-6">
+    <div class="card p-3">
+      <h6 class="text-white mb-2"><i class="fas fa-plus-circle text-success me-2"></i>Skills added (first → latest)</h6>
+      {% if progress.skills_added %}
+      <div class="d-flex flex-wrap gap-2">
+        {% for s in progress.skills_added %}
+        <span class="badge bg-success">{{ s }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="text-muted mb-0 small">Upload another version to compare skill growth.</p>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card p-3">
+      <h6 class="text-white mb-2"><i class="fas fa-check-circle text-primary me-2"></i>Missing keywords reduced</h6>
+      {% if progress.missing_reduced %}
+      <div class="d-flex flex-wrap gap-2">
+        {% for s in progress.missing_reduced %}
+        <span class="badge bg-primary">{{ s }}</span>
+        {% endfor %}
+      </div>
+      {% else %}
+      <p class="text-muted mb-0 small">Keep iterating — gaps will shrink as you tailor resumes to JDs.</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="card p-3 mt-3">
+  <h6 class="text-white mb-3">Version timeline</h6>
+  <div class="table-responsive">
+    <table class="table table-borderless align-middle mb-0">
+      <thead>
+        <tr class="text-muted small">
+          <th>Version</th>
+          <th>Date</th>
+          <th>ATS</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for v in progress.versions %}
+        <tr>
+          <td class="text-white fw-semibold">v{{ v.version }}</td>
+          <td class="text-muted">{{ v.label }}</td>
+          <td><span class="badge bg-secondary">{{ v.ats_score }}%</span></td>
+          <td class="text-muted small">{{ v.source }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  window.resumeProgress = {{ progress_json|safe }};
+</script>
+<script src="{{ url_for('static', filename='js/vidyastra/resume_history.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "vidyastra/dashboard_layout.html" %}
+{% block title %}Learning Paths — Vidyastra{% endblock %}
+{% block dashboard_content %}
+<div class="card p-4 border-0 vid-card">
+  <h4 class="text-white mb-1">Learning Paths</h4>
+  <p class="text-muted mb-4">Structured roadmaps for your goal: <strong class="text-white">{{ career_goal }}</strong></p>
+
+  <div class="row g-3">
+    {% for key, track in paths.items() %}
+    <div class="col-md-6">
+      <div class="card p-3 bg-secondary-subtle border-0 h-100">
+        <h6 class="text-white text-capitalize">{{ key.replace('_', ' ') }}</h6>
+        <p class="text-muted small">{{ track.summary or '' }}</p>
+        {% if track.phases %}
+        <ol class="text-muted small mb-0 ps-3">
+          {% for phase in track.phases %}
+          <li class="mb-2"><strong>{{ phase.title }}</strong> — {{ phase.topics | join(', ') }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "vidyastra/dashboard_layout.html" %}
+{% block title %}AI Mentor - Vidyastra{% endblock %}
+{% block dashboard_content %}
+<div class="vid-page-nav"><a href="{{ url_for('dashboard.home') }}" class="btn btn-outline-secondary btn-sm"><i class="fas fa-house me-1"></i>Dashboard</a></div>
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-3">
+  <div>
+    <h3 class="text-white mb-1">AI Mentor</h3>
+  </div>
+  <div class="d-flex gap-2">
+    <button class="btn btn-outline-secondary" id="mentorClear"><i class="fas fa-broom me-2"></i>Clear</button>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-8">
+    <div class="card p-3">
+      <div id="mentorMessages" class="chat-messages mentor-messages mb-3"></div>
+      <div class="input-group">
+        <input id="mentorInput" class="form-control" placeholder="Ask something… (Press Enter to send)">
+        <button id="mentorSend" class="btn btn-primary"><i class="fas fa-paper-plane me-2"></i>Send</button>
+      </div>
+      <div id="mentorHint" class="text-muted small mt-2">
+        Tip: include your goal and deadline for more specific guidance.
+      </div>
+      <div id="mentorError" class="alert alert-danger border-0 d-none mt-3 mb-0"></div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="card p-3">
+      <h6 class="text-white mb-2">Suggested prompts</h6>
+      <div class="vstack gap-2">
+        <button class="btn btn-outline-secondary text-start mentor-suggestion">Make me a 2-week plan for my weakest subject.</button>
+        <button class="btn btn-outline-secondary text-start mentor-suggestion">How do I improve my resume ATS score?</button>
+        <button class="btn btn-outline-secondary text-start mentor-suggestion">Give me a roadmap for frontend developer.</button>
+        <button class="btn btn-outline-secondary text-start mentor-suggestion">How to prepare for an interview in 7 days?</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/vidyastra/mentor.js') }}"></script>
+{% endblock %}
+

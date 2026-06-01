@@ -1,0 +1,12 @@
+{
+  "python": {
+    "easy": [
+      {
+        "id": "py01",
+        "question": "Which keyword creates a function in Python?",
+        "options": ["func", "def", "lambda", "class"],
+        "answer": "def"
+      }
+    ]
+  }
+}

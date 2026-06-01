@@ -1,0 +1,258 @@
+{% extends "base.html" %}
+{% block title %}Vidyastra - AI Learning & Career Platform{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/vidyastra/vidyastra.css') }}">
+{% endblock %}
+{% block hero %}
+<section class="vid-hero py-5 landing-hero vid-reveal">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6 landing-hero-copy">
+        <span class="feature-chip mb-3 d-inline-block">AI for students</span>
+        <h1 class="display-4 fw-bold text-white mb-3">Learn smarter.<br class="d-none d-md-block"> Build a stronger career.</h1>
+        <p class="lead text-muted mb-4 landing-lead">
+          Resume intelligence, adaptive quizzes, weak-subject detection, and an AI mentor — one premium platform for your growth.
+        </p>
+        <div class="d-flex gap-3 flex-wrap landing-hero-actions">
+          <a href="{{ url_for('auth.signup') }}" class="btn btn-primary btn-lg px-4 shadow-sm">Get Started Free</a>
+          <a href="#features" class="btn btn-outline-secondary btn-lg px-4 vid-scroll-link">See Features</a>
+        </div>
+        <div class="d-flex flex-wrap gap-4 mt-4 pt-2 landing-trust">
+          <div><span class="text-white fw-semibold counter" data-target="12000">0</span><span class="text-muted small d-block">Students</span></div>
+          <div><span class="text-white fw-semibold counter" data-target="45000">0</span><span class="text-muted small d-block">Quizzes taken</span></div>
+          <div><span class="text-white fw-semibold">ATS</span><span class="text-muted small d-block">Resume insights</span></div>
+        </div>
+      </div>
+      <div class="col-lg-6 vid-reveal vid-reveal-delay">
+        <div class="card p-4 landing-preview shadow-lg">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="text-muted small">Dashboard preview</span>
+            <span class="badge bg-primary">Live</span>
+          </div>
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="p-3 rounded-4 landing-stat-tile">
+                <small class="text-muted">Resume ATS</small>
+                <h4 class="text-white mb-0 mt-1">88%</h4>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="p-3 rounded-4 landing-stat-tile">
+                <small class="text-muted">Quiz accuracy</small>
+                <h4 class="text-white mb-0 mt-1">82%</h4>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="p-3 rounded-4 landing-stat-tile">
+                <small class="text-muted">Focus today</small>
+                <div class="fw-semibold text-white">DSA revision + adaptive quiz</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+{% block content %}
+
+<section class="landing-section mb-5 vid-reveal">
+  <div class="row g-3 text-center">
+    <div class="col-6 col-md-3">
+      <div class="card p-4 h-100 vid-stat-card">
+        <div class="display-6 fw-bold text-white counter" data-target="92">0</div>
+        <div class="text-muted small">Avg. ATS improvement</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card p-4 h-100 vid-stat-card">
+        <div class="display-6 fw-bold text-white counter" data-target="7">0</div>
+        <div class="text-muted small">Core subjects covered</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card p-4 h-100 vid-stat-card">
+        <div class="display-6 fw-bold text-white"><span class="counter" data-target="24">0</span>/7</div>
+        <div class="text-muted small">AI mentor access</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-3">
+      <div class="card p-4 h-100 vid-stat-card">
+        <div class="display-6 fw-bold text-white counter" data-target="3">0</div>
+        <div class="text-muted small">Min. steps to start</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="landing-section mb-5 vid-reveal">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-6">
+      <h2 class="text-white fw-bold mb-3">About Vidyastra</h2>
+      <p class="text-muted landing-body">
+        Vidyastra helps students close learning gaps, improve resumes for real job descriptions, and plan careers with data — not guesswork.
+      </p>
+    </div>
+    <div class="col-lg-6">
+      <div class="row g-3">
+        <div class="col-6">
+          <div class="card p-3 h-100 text-center landing-mini-card">
+            <i class="fas fa-chart-line text-primary fa-lg mb-2"></i>
+            <div class="fw-semibold text-white small">Progress analytics</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card p-3 h-100 text-center landing-mini-card">
+            <i class="fas fa-file-lines text-warning fa-lg mb-2"></i>
+            <div class="fw-semibold text-white small">Resume memory</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card p-3 h-100 text-center landing-mini-card">
+            <i class="fas fa-brain text-info fa-lg mb-2"></i>
+            <div class="fw-semibold text-white small">Adaptive quizzes</div>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="card p-3 h-100 text-center landing-mini-card">
+            <i class="fas fa-robot text-success fa-lg mb-2"></i>
+            <div class="fw-semibold text-white small">AI mentor</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="features" class="landing-section features-section mb-5 vid-reveal">
+  <div class="text-center mb-5 landing-section-head">
+    <span class="feature-chip mb-3 d-inline-block">Features</span>
+    <h2 class="text-white fw-bold mb-2">Everything you need to grow</h2>
+    <p class="text-muted mx-auto landing-section-sub">
+      A modern student dashboard for learning acceleration, resume intelligence, and career guidance.
+    </p>
+  </div>
+
+  <div class="vertical-features">
+    <div class="feature-item">
+      <div class="feature-icon-box"><i class="fas fa-file-lines"></i></div>
+      <div>
+        <h4 class="text-white">Resume Analyzer</h4>
+        <p class="text-muted mb-0">ATS scoring, missing skills, and version history so you can see improvement over time.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon-box"><i class="fas fa-brain"></i></div>
+      <div>
+        <h4 class="text-white">Adaptive Quizzes</h4>
+        <p class="text-muted mb-0">Timed quizzes that adapt difficulty based on performance to build real mastery.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon-box"><i class="fas fa-calendar-check"></i></div>
+      <div>
+        <h4 class="text-white">Study Planner</h4>
+        <p class="text-muted mb-0">Daily goals, reminders, and a focused loop to strengthen weak areas quickly.</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon-box"><i class="fas fa-robot"></i></div>
+      <div>
+        <h4 class="text-white">AI Mentor</h4>
+        <p class="text-muted mb-0">Ask questions, get roadmaps, and receive career guidance tailored to your goals.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="landing-section mb-5 vid-reveal">
+  <h2 class="text-white fw-bold text-center mb-4">How it works</h2>
+  <div class="row g-3 landing-steps">
+    <div class="col-md-3 col-6">
+      <div class="card p-4 h-100 text-center landing-step-card">
+        <div class="landing-step-num mb-2">1</div>
+        <div class="fw-semibold text-white">Sign up</div>
+        <p class="text-muted small mb-0 mt-2">Create your free student account</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card p-4 h-100 text-center landing-step-card">
+        <div class="landing-step-num mb-2">2</div>
+        <div class="fw-semibold text-white">Analyze resume</div>
+        <p class="text-muted small mb-0 mt-2">Upload PDF + job description</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card p-4 h-100 text-center landing-step-card">
+        <div class="landing-step-num mb-2">3</div>
+        <div class="fw-semibold text-white">Practice</div>
+        <p class="text-muted small mb-0 mt-2">Quizzes & weak-subject focus</p>
+      </div>
+    </div>
+    <div class="col-md-3 col-6">
+      <div class="card p-4 h-100 text-center landing-step-card">
+        <div class="landing-step-num mb-2">4</div>
+        <div class="fw-semibold text-white">Grow</div>
+        <p class="text-muted small mb-0 mt-2">Track ATS & learning streaks</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="landing-section mb-5 vid-reveal">
+  <div class="text-center mb-4 landing-section-head">
+    <span class="feature-chip mb-2 d-inline-block">Testimonials</span>
+    <h2 class="text-white fw-bold mb-2">Students love Vidyastra</h2>
+  </div>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card p-4 h-100 vid-testimonial-card">
+        <div class="text-warning mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-muted small mb-3">"The resume analyzer showed exactly which keywords I was missing. My ATS score jumped in one week."</p>
+        <div class="fw-semibold text-white small">Priya S. · CSE</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-4 h-100 vid-testimonial-card">
+        <div class="text-warning mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <p class="text-muted small mb-3">"Adaptive quizzes helped me focus on DSA weak spots instead of random practice."</p>
+        <div class="fw-semibold text-white small">Arjun M. · IT</div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card p-4 h-100 vid-testimonial-card">
+        <div class="text-warning mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-stroke"></i></div>
+        <p class="text-muted small mb-3">"Study planner + mentor made my prep structured. Dashboard feels like a real SaaS product."</p>
+        <div class="fw-semibold text-white small">Neha K. · ECE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="landing-cta mb-5 vid-reveal">
+  <div class="card p-5 text-center landing-cta-card">
+    <h3 class="text-white fw-bold mb-2">Ready to level up?</h3>
+    <p class="text-muted mb-4 mx-auto landing-section-sub">
+      Join Vidyastra and get a personalized dashboard, resume intelligence, and AI-powered study tools.
+    </p>
+    <div class="d-flex justify-content-center gap-3 flex-wrap">
+      <a href="{{ url_for('auth.signup') }}" class="btn btn-primary btn-lg px-4">Create free account</a>
+      <a href="{{ url_for('main.resume_analyzer') }}" class="btn btn-outline-secondary btn-lg px-4">Try Resume Analyzer</a>
+    </div>
+  </div>
+</section>
+
+<footer class="landing-footer text-center text-muted small pb-4">
+  <div class="d-flex justify-content-center gap-3 mb-2 flex-wrap">
+    <a href="#about" class="text-muted text-decoration-none vid-scroll-link">About</a>
+    <a href="#features" class="text-muted text-decoration-none vid-scroll-link">Features</a>
+    <a href="{{ url_for('auth.login') }}" class="text-muted text-decoration-none">Login</a>
+    <a href="{{ url_for('auth.signup') }}" class="text-muted text-decoration-none">Sign up</a>
+  </div>
+  <div>Vidyastra &copy; 2026 · AI-Powered Learning & Career Platform</div>
+</footer>
+{% endblock %}
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/vidyastra/landing.js') }}"></script>
+{% endblock %}
